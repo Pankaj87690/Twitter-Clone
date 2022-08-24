@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container mt-5">
+    <form method="Post">
+        {% csrf_token %}
+        <fiedset class="form-group">
+            <legend class="border-bottom mb-4">Confirm delete</legend>
+        </fiedset>
+        <div class="form-group mt-3">
+            <button class="btn btn-primary rounded-pill" type="submit">Delete</button>
+            <a href='{% url 'home' %}'><button class="btn btn-primary rounded-pill">Cancel</button></a>
+        </div>
+    </form>
+</div>
+
+{% endblock content %}

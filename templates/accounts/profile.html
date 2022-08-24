@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %}Profile{% endblock title %}
+
+{% block content %}
+
+<div class='container mt-2'>
+    <div class='col-sm-2'>
+        <div class='media'>
+            <img class="rounded-circle account-img img-fluid" src="{{user.profile.image.url}}" alt="Image not available" style="height: 200px; width: 200px;"/>
+        </div>
+    </div>
+    <br>
+    <h3>{{user.username}}</h3>
+    <div class="d-flex">
+        <h5>{{user.profile.firstname}}</h5>
+        <h5 class="mx-2">{{user.profile.lastname}}</h5>
+    </div>
+    <br>
+    <div class='card mb-4'>
+        <div class='card-body'>
+            {{user.profile.bio}}
+        </div>
+    </div>
+    <a href='{% url 'profileupdate' %}' style="border: 1px solid black; border-radius:20px; padding:4px; background-color: rgb(76, 172, 245); color: white;">Edit profile</a>
+</div>
+
+
+{% endblock content %}

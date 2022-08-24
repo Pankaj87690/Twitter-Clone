@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock title %}
+
+{% block content %}
+
+<div class=" container p-5 mb-4 bg-light rounded-3">
+  <div class="container-fluid py-5">
+    <h1 class="display-5">Hello, <strong>{{user.username|title}}</strong></h1>
+    <p class="col-md-8 fs-4">This is a simple Twitter Clone App!!!.</p>
+    <hr>
+    <br>
+    <p>Click below to create a tweet.</p>
+    <a class="btn btn-primary btn-lg" role="button" href='{% url 'tweet' %}'>Create</a>
+  </div>
+</div>
+<div>
+  {% for tweet in object_list %}
+  <div class="container">
+      <br><br>
+      <div class="card">
+          <div class="card-header">
+            <div class="d-flex">
+              <a class="navbar-brand" href="#">
+                <img class="rounded-circle" src="{{user.profile.image.url}}" alt="" width="30" height="24">
+              </a>
+              <h4 class="mx-2"><a href="#">{{tweet.uname|title}}</a></h4>
+            </div>
+            <p>{{tweet.datetime}}</p>
+          </div>
+          <div class="card-body">
+            <h5 class="card-text">{{tweet.text|capfirst}}</h5>
+            {% if tweet.uname == user %}
+            <a href='{% url 'tweetupdate' tweet.id %}'><button class="btn btn-primary rounded-pill">Update</button></a>
+            <a href='{% url 'tweetdelete' tweet.id %}'><button class="btn btn-danger rounded-pill">Delete</button></a>
+            {% endif %}
+          </div>
+        </div>
+  </div>
+  {% endfor %}
+</div>
+
+{% endblock content %}

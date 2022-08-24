@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}Profile Update{% endblock title %}
+
+{% block content %}
+
+<div class="container mt-5">
+    <form method="Post" entype="multipart/form-data">
+        {% csrf_token %}
+        <fiedset class="form-group">
+            <legend class="border-bottom mb-4">Edit</legend>
+            {{pform.as_p}}
+        </fiedset>
+        <div class="form-group mt-3">
+            <button class="btn btn-primary rounded-pill" type="submit">Update</button>
+        </div>
+    </form>
+</div>
+
+{% endblock content %}
